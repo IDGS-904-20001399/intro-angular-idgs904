@@ -1,29 +1,47 @@
 <div class="card">
-  <div class="card-header">Alumnos IRIC</div>
+  <div class="card-header">
+    Alumnos IRIC
+  </div>
   <div class="card-body">
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-4"></div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <h3>filtros:</h3>
+    <div class="classrow">
+      <div class="col-md-2">
+        <input [(ngModel)]="listFilter" type="text" name="filter" class="form-control">
       </div>
-    </div>
-    <div class="table-responsive">
-      <table class="table" *ngif="alumnos.length">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Matricula</th>
-            <th>Nombre</th>
-            <th>Edad</th>
-            <th>Correo</th>
-            <th>Pago</th>
-            <th>Imagen</th>
-          </tr>
-        </thead>
-      </table>
+        <div class="col-md-6">
+
+        </div>
+      <div class="col-md-4">
+        <div class="col-md-6">
+          <h3>Filtro: {{listFilter}}</h3>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table"
+               *ngIf="alumnos.length">
+          <thead>
+            <tr>
+              <th><button class="btn btn-primary" (click)="showImagen()">imagen</button></th>
+              <th>Matricula</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Pago</th>
+              <th>Foto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of alumnos">
+              <td>{{item.matricula}}</td>
+              <td>{{item.nombre}}</td>
+              <td>{{item.correo}}</td>
+              <td>{{item.pago}}</td>
+              <td><img *ngIf="muestraImg" [src]="item.foto"
+                     [title]="item.nombre" 
+                      [style.width.px]="imageWidth"
+                        [style.margin.px]="imageMargin"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
