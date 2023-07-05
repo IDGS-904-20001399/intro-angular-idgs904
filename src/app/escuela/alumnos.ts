@@ -5,5 +5,6 @@ export interface alumnosIR{
     correo:string,
     pago:number,
     foto:string,
+    calif:number
 
 }
